@@ -1,5 +1,4 @@
-# Jai Ganesh
-
+# Import packages
 import argparse
 from pathlib import Path
 
