@@ -7,3 +7,6 @@
 # \d{1,3} : last number of ip
 
 IP_PATTERN = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
+
+#  Adding URL pattern
+URL_PATTERN = r"https?://[^\s]+"
