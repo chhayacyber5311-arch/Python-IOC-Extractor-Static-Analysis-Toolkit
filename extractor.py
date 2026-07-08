@@ -5,10 +5,11 @@ import re
 from patterns import IP_PATTERN
 
 # Importing from utils.py, is_valid_ipv4
-from utils import is_valid_ipv4
+from utils import is_valid_ipv4,clean_url
 
 # Importing URL_PATTERN from patterns.py
 from patterns import URL_PATTERN
+
 
 # ips = re.findall -> to find givem pattern in IP_PATTERN the format in target text file 
 # set -> remove duplicate ips in file but can change order
@@ -20,8 +21,10 @@ def extract_iocs(content):
     raw_ips = re.findall(IP_PATTERN, content)
     inorder_ips = list(dict.fromkeys(raw_ips))
     ips = [ip for ip in inorder_ips if is_valid_ipv4(ip)]
-    urls = list(dict.fromkeys(re.findall(URL_PATTERN, content)))
 
+    raw_urls = re.findall(URL_PATTERN, content)
+    urls = [clean_url(url) for url in raw_urls]
+    urls = list(dict.fromkeys(urls))
 
     return{
         "IPs": ips,
