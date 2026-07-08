@@ -16,3 +16,7 @@ def is_valid_ipv4(ip):
             return False
         
     return True
+
+# Cleaning URL
+def clean_url(url):
+    return url.rstrip(".),"";]\'")
