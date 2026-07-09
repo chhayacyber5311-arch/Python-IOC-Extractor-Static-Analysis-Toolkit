@@ -10,3 +10,6 @@ IP_PATTERN = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
 
 #  Adding URL pattern
 URL_PATTERN = r"https?://[^\s]+"
+
+# Adding domain pattern
+DOMAIN_PATTERN = r"\b(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}\b"
