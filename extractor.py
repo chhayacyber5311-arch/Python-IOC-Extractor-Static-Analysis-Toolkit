@@ -1,17 +1,11 @@
 #  Impporting re for regex patterns, means reading text and find the given pattern in file
 import re
 
-# Importing IP_PATTERN from patterns.py
-from patterns import IP_PATTERN
+# Importing patterns from patterns.py
+from patterns import IP_PATTERN, URL_PATTERN, DOMAIN_PATTERN, EMAIL_PATTERN
 
 # Importing from utils.py, is_valid_ipv4
 from utils import is_valid_ipv4,clean_url
-
-# Importing URL_PATTERN from patterns.py
-from patterns import URL_PATTERN
-
-# Importing DOMAIN_PATTERN from patterns.py
-from patterns import DOMAIN_PATTERN
 
 
 # ips = re.findall -> to find givem pattern in IP_PATTERN the format in target text file 
@@ -31,8 +25,11 @@ def extract_iocs(content):
 
     domains = list(dict.fromkeys(re.findall(DOMAIN_PATTERN, content)))
 
+    emails = list(dict.fromkeys(re.findall(EMAIL_PATTERN, content)))
+
     return{
         "IPs": ips,
         "URLs": urls,
-        "Domains": domains
+        "Domains": domains,
+        "Emails" : emails
     }
