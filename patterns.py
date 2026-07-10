@@ -13,3 +13,6 @@ URL_PATTERN = r"https?://[^\s]+"
 
 # Adding domain pattern
 DOMAIN_PATTERN = r"\b(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}\b"
+
+# Adding Email pattern
+EMAIL_PATTERN = r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b"
