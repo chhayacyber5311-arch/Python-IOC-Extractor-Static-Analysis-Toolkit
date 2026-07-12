@@ -16,3 +16,10 @@ DOMAIN_PATTERN = r"\b(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}\b"
 
 # Adding Email pattern
 EMAIL_PATTERN = r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b"
+
+
+# Adding hashing pattern
+# MD5, SHA1, SHA256
+MD5_PATTERN = r"\b[a-fA-F0-9]{32}\b"
+SHA1_PATTERN = r"\b[a-fA-F0-9]{40}\b"
+SHA256_PATTERNS = r"\b[a-fA-F0-9]{64}\b"
