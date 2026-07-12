@@ -7,6 +7,8 @@ from patterns import IP_PATTERN, URL_PATTERN, DOMAIN_PATTERN, EMAIL_PATTERN
 # Importing from utils.py, is_valid_ipv4
 from utils import is_valid_ipv4,clean_url
 
+# Importing hashes from hashes.py
+from hashes import extract_hashes
 
 # ips = re.findall -> to find givem pattern in IP_PATTERN the format in target text file 
 # set -> remove duplicate ips in file but can change order
@@ -27,9 +29,12 @@ def extract_iocs(content):
 
     emails = list(dict.fromkeys(re.findall(EMAIL_PATTERN, content)))
 
+    hashes = extract_hashes(content)
+
     return{
         "IPs": ips,
         "URLs": urls,
         "Domains": domains,
-        "Emails" : emails
+        "Emails" : emails,
+        "Hashes": hashes
     }
