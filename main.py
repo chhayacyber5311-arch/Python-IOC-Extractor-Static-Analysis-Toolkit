@@ -1,8 +1,12 @@
-# Import packages
+# Jai Ganesh
+
 import argparse
 from pathlib import Path
 
 from extractor import extract_iocs
+
+# Import result
+from reporter import print_report
 
 # Creating parse objects
 parser = argparse.ArgumentParser(
@@ -47,4 +51,4 @@ print("[+] File loaded successfully.")
 
 # Print Result
 result = extract_iocs(content)
-print(result)
+print_report(result)
