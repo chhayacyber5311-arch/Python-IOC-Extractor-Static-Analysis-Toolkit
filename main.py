@@ -6,7 +6,7 @@ from pathlib import Path
 from extractor import extract_iocs
 
 # Import result
-from reporter import print_report
+from reporter import print_report, build_text_report
 
 # Creating parse objects
 parser = argparse.ArgumentParser(
@@ -50,5 +50,17 @@ except Exception as e:
 print("[+] File loaded successfully.")
 
 # Print Result
-result = extract_iocs(content)
-print_report(result)
+results = extract_iocs(content)
+print_report(results)
+
+if args.output:
+    report_text = build_text_report(results)
+    
+    try:    
+      output_path = Path(args.output)
+      output_path.write_text(report_text)
+      print(f"\n Raport saved successfully: {output_path}")
+
+    except Exception as e:
+      print(f"[!] Error: could not save report: {e}")
+      exit(1)
