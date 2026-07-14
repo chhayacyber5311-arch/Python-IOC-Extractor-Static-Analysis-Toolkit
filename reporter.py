@@ -1,22 +1,28 @@
-def print_report(results):
-    print("\n======== IOC Reporter ==========")
+# Creating new function to print report into text
+def build_text_report(results):
+    lines=[]
+    lines.append(f"\n=============IOC REPORTER==============")
 
     for category, values in results.items():
-        print(f"\n[+] {category}")
+        lines.append(f"\n[+]  {category}")
 
-        if isinstance(values,dict):
-            for sub_category, sub_values, in values.items():
-                print(f"      - {sub_category}:  {len(sub_values)}  found")
+        if isinstance(values, dict): 
+           for sub_category, sub_values in values.items():
+             lines.append(f"   - {sub_category}: {len(sub_values)}  found")
+ 
+             for value in sub_values:
+                  lines.append(f"    -  {value}")
 
+        else:
+            lines.append(f"  {len(values)} found")
+        
 
-                for value in sub_values:
-                    print(f"     {values}")
+            for value in values:
+              lines.append(f"   -  {value}")
 
-                else:
-                    print(f"     {len(values)} found")
+    lines.append("\n============================================")
+    return "\n".join(lines)
 
-
-                    for value in values:
-                        print(f"    - {value}")
-
-        print("\n==============================================")
+def print_report(results):
+    print(build_text_report(results))
+   
