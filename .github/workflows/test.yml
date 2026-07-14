@@ -1,0 +1,34 @@
+name: Test IOC Extractor
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  run-tool:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Create sample input
+        run: |
+          cat > sample.txt << 'EOF'
+          IP: 192.168.1.10
+          Bad IP: 999.999.999.999
+          URL: http://example.com
+          Email: attacker@test.com
+          MD5: d41d8cd98f00b204e9800998ecf8427e
+          EOF
+
+      - name: Run IOC extractor
+        run: python main.py sample.txt -o result.txt
+
+      - name: Show report
+        run: cat result.txt
